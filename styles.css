@@ -16,6 +16,8 @@
     grid-template: 1fr 4fr / 1fr 4fr;
 }
 
+/* SIDEBOARD SECTION */
+
 .sideboard {
     background-color: #1B3358;
     grid-row: 1 / -1;
@@ -26,12 +28,8 @@
     background-color: #BD83B8;
 }
 
-.main-content-container {
-    background-color: #979696;
-}
-
 .dashboard-logo {
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 600;
     padding-left: 20px;
     padding-top: 20px;
@@ -60,13 +58,68 @@
 
 a {
     color: var(--sidebar-font-color);
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 600;
     text-decoration: none;
 }
 
+/* MAIN CONTENT SECTION */
+
+.main-content-container {
+    background-color: #979696;
+    display: grid;
+    grid-template: 1fr 5fr 1fr 4fr / 5fr 2fr;
+    grid-template-areas: "arojects-header announcements-header"
+                         "projects announcements"
+                         "projects trending-header"
+                         "projects trending";
+    gap: 10px 20px;
+    padding: 0 20px 50px;
+}
+
+.projects-section-container {
+    grid-area: projects;
+    display: grid;
+    grid-template: min-content / repeat(2, 1fr);
+    gap: 20px;
+}
+
+.main-content-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    align-self: end;
+}
+
+.single-project-container,
+.announcements-section-container,
+.trending-section-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px;
+    padding: 20px;
+}
+
 .single-project-container {
-    border: 1px solid white;
+    border-left: 10px solid #F1916D;
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+}
+
+.project-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.project-description,
+.announcement-description,
+.trending-item-fullname {
+    color: #3f3e3e;
+}
+
+.reactions-container {
+    margin-top: 20px;
+    place-self: end end;
 }
 
 button {
@@ -74,6 +127,11 @@ button {
     width: 30px;
     background: transparent;
     border: none;
+}
+
+button:hover {
+    cursor: pointer;
+    filter: invert(0.4);
 }
 
 .favourite {
@@ -86,4 +144,47 @@ button {
 
 .share {
     background-image: url(./SVG_Icons/share-variant-outline.svg);
+}
+
+.main-content-right {
+    border: 3px dotted purple;
+}
+
+.announcements-section-container {
+    display: grid;
+    grid-template-rows: repeat(5, min-content);
+    gap: 10px;
+    align-content: space-evenly;
+}
+
+.announcement-title {
+    font-weight: 500;
+}
+
+.announcement-description {
+    font-size: 0.8rem;
+}
+
+.trending-section-container {
+    display: grid;
+}
+
+.single-trending-item-container {
+    --trending-img-size: 40px;
+    height: var(--trending-img-size);
+    display: grid;
+    grid-template: repeat(2, 1fr) / var(--trending-img-size) 1fr;
+    gap: 5px 20px;
+}
+
+.trending-item-name {
+    font-weight: 500;
+}
+
+.trending-item-img {
+    grid-row: 1 / -1;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: calc(var(--trending-img-size)/2);
 }
